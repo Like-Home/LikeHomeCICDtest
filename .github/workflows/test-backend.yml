@@ -17,6 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
+        working-directory: ./backend
         run: |
           cd backend
           python -m pip install --upgrade pip
@@ -24,12 +25,14 @@ jobs:
           python -m poetry install
 
       - name: Run flask migrations
+        working-directory: ./backend
         run: |
           python manage.py migrate
           python manage.py makemigrations
           python manage.py migrate --run-syncdb
 
       - name: Lint with autopep8
+        working-directory: ./backend
         run: |
           poetry run isort app api
           poetry run autopep8 --in-place --recursive app api
