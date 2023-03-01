@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11"]
-        source-dirs: ["app", "api"]
 
     steps:
       - uses: actions/checkout@v3
@@ -33,5 +32,5 @@ jobs:
 
       - name: Lint with autopep8
         run: |
-          poetry run isort ${{ matrix.source-dirs }}
-          poetry run autopep8 --in-place --recursive ${{ matrix.source-dirs }}
+          poetry run isort app api
+          poetry run autopep8 --in-place --recursive app api
