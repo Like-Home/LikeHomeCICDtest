@@ -26,7 +26,6 @@ jobs:
           virtualenvs-in-project: true
 
       - name: Set up cache
-        working-directory: ./backend
         uses: actions/cache@v2
         id: cached-poetry-dependencies
         with:
